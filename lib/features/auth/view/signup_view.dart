@@ -1,30 +1,30 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tweeter_clone/commun/button.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tweeter_clone_flutter/commun/button.dart';
+import 'package:tweeter_clone_flutter/commun/pallette.dart';
+import 'package:tweeter_clone_flutter/constantes/ui_const.dart';
+import 'package:tweeter_clone_flutter/features/auth/controller/auth_controller.dart';
+import 'package:tweeter_clone_flutter/features/auth/view/login_view.dart';
+import 'package:tweeter_clone_flutter/features/auth/widgets/auth_field.dart';
 
-import 'package:flutter_tweeter_clone/constantes/ui_const.dart';
-import 'package:flutter_tweeter_clone/features/view/signup_view.dart';
-
-import 'package:flutter_tweeter_clone/features/widgets/auth_field.dart';
-import 'package:flutter_tweeter_clone/theme/theme.dart';
-
-class LogginView extends StatefulWidget {
+class SignupView extends ConsumerStatefulWidget {
    static route() => MaterialPageRoute(
-        builder: (context) => const LogginView(),
+        builder: (context) => const SignupView(),
       );
-  const LogginView({super.key});
+
+  const SignupView({super.key});
 
   @override
-  State<LogginView> createState() => _LogginViewState();
+  ConsumerState<SignupView> createState() => _SignupViewState();
 }
 
-class _LogginViewState extends State<LogginView> {
-  //pour que appbar ne se charge pas a chaque fois
-  //on crée une instance
+class _SignupViewState extends ConsumerState<SignupView> {
   final appbar = UIConstants.appBar();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final hintStyle = const TextStyle(fontSize: 18);
+
   @override
   void dispose() {
     super.dispose();
@@ -32,8 +32,17 @@ class _LogginViewState extends State<LogginView> {
     passwordController.dispose();
   }
 
+  void onSignUp() {
+    ref.read(authControllerProvider.notifier).signUp(
+          email: emailController.text,
+          password: passwordController.text,
+          context: context,
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
+     final isLoading = ref.watch(authControllerProvider);
     return Scaffold(
       appBar: appbar,
       body: SingleChildScrollView(
@@ -45,7 +54,7 @@ class _LogginViewState extends State<LogginView> {
                 height: 100,
               ),
               const Text(
-                "Log In",
+                "Sign Up",
                 style: TextStyle(
                   color: Pallete.greyColor,
                   fontWeight: FontWeight.bold,
@@ -79,7 +88,7 @@ class _LogginViewState extends State<LogginView> {
               Align(
                 alignment: Alignment.topRight,
                 child: ButtonWidget(
-                  onTap: () {},
+                  onTap: onSignUp,
                   label: "Done",
                   backgroundColor: Pallete.whiteColor,
                   textColor: Pallete.backgroundColor,
@@ -91,10 +100,10 @@ class _LogginViewState extends State<LogginView> {
               //textspan
               RichText(
                 text: TextSpan(
-                  text: "Already have an account?",
+                  text: "Don't have an account?",
                   children: [
                     TextSpan(
-                      text: "   Log in",
+                      text: "   Login",
                       style: const TextStyle(
                         color: Pallete.blueColor,
                         fontSize: 16,
@@ -102,8 +111,8 @@ class _LogginViewState extends State<LogginView> {
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
                           Navigator.push(
-                              context,
-                             SignupView.route(),
+                            context,
+                            LogginView.route(),
                           );
                         },
                     ),

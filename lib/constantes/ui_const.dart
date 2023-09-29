@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tweeter_clone/theme/theme.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tweeter_clone_flutter/commun/pallette.dart';
+
 
 
 

@@ -1,33 +1,45 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tweeter_clone/commun/button.dart';
-import 'package:flutter_tweeter_clone/constantes/ui_const.dart';
-import 'package:flutter_tweeter_clone/features/view/login_view.dart';
-import 'package:flutter_tweeter_clone/features/widgets/auth_field.dart';
-import 'package:flutter_tweeter_clone/theme/theme.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tweeter_clone_flutter/commun/button.dart';
+import 'package:tweeter_clone_flutter/commun/pallette.dart';
+import 'package:tweeter_clone_flutter/constantes/ui_const.dart';
+import 'package:tweeter_clone_flutter/features/auth/controller/auth_controller.dart';
+import 'package:tweeter_clone_flutter/features/auth/view/signup_view.dart';
+import 'package:tweeter_clone_flutter/features/auth/widgets/auth_field.dart';
 
-class SignupView extends StatefulWidget {
+
+class LogginView extends ConsumerStatefulWidget {
    static route() => MaterialPageRoute(
-        builder: (context) => const SignupView(),
+        builder: (context) => const LogginView(),
       );
-
-  const SignupView({super.key});
+  const LogginView({super.key});
 
   @override
-  State<SignupView> createState() => _SignupViewState();
+    ConsumerState<LogginView> createState() => _LogginViewState();
 }
 
-class _SignupViewState extends State<SignupView> {
+class _LogginViewState extends   ConsumerState<LogginView> {
+  //pour que appbar ne se charge pas a chaque fois
+  //on crée une instance
   final appbar = UIConstants.appBar();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final hintStyle = const TextStyle(fontSize: 18);
-
   @override
   void dispose() {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
+  }
+
+  void onLogin() {
+    ref.read(authControllerProvider.notifier).login(
+      email:emailController.text,
+      password: passwordController.text,
+      //state proprietes
+      context:context,
+      );
   }
 
   @override
@@ -43,7 +55,7 @@ class _SignupViewState extends State<SignupView> {
                 height: 100,
               ),
               const Text(
-                "Sign Up",
+                "Log In",
                 style: TextStyle(
                   color: Pallete.greyColor,
                   fontWeight: FontWeight.bold,
@@ -77,7 +89,7 @@ class _SignupViewState extends State<SignupView> {
               Align(
                 alignment: Alignment.topRight,
                 child: ButtonWidget(
-                  onTap: () {},
+                  onTap: onLogin,
                   label: "Done",
                   backgroundColor: Pallete.whiteColor,
                   textColor: Pallete.backgroundColor,
@@ -89,10 +101,10 @@ class _SignupViewState extends State<SignupView> {
               //textspan
               RichText(
                 text: TextSpan(
-                  text: "Don't have an account?",
+                  text: "Already have an account?",
                   children: [
                     TextSpan(
-                      text: "   Sign up",
+                      text: '  Sign up',
                       style: const TextStyle(
                         color: Pallete.blueColor,
                         fontSize: 16,
@@ -100,8 +112,8 @@ class _SignupViewState extends State<SignupView> {
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
                           Navigator.push(
-                            context,
-                            LogginView.route(),
+                              context,
+                             SignupView.route(),
                           );
                         },
                     ),
