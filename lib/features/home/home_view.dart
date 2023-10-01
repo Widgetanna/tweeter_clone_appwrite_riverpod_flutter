@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tweeter_clone_flutter/commun/pallette.dart';
 import 'package:tweeter_clone_flutter/constantes/ui_const.dart';
+import 'package:tweeter_clone_flutter/features/tweet/tweet_view/tweet_view.dart';
+
 
 class HomeView extends StatefulWidget {
   static route() => MaterialPageRoute(
@@ -18,38 +20,41 @@ class _HomeViewState extends State<HomeView> {
   int _page = 0;
   final AppBar appBar = UIConstants.appBar();
 
-  void pageChange (int index) {
-   setState(() {
-     _page =index;
-   });
+  void onPageChange(int index) {
+    setState(() {
+      _page = index;
+    });
   }
 
-  
+  onCreateTweet() {
+    Navigator.push(context, CreateTweetScreen.route());
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _page == 0 ? appBar : null,
-      //pour maintenir state 
+      //pour maintenir state
       body: IndexedStack(
         index: _page,
-        //children: UIConstants.bottomTabBarPages,
+        children: UIConstants.bottomTabBarPages,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
-        child: const Icon(Icons.add,
-        color:Pallete.whiteColor,
-        size: 28,
+        onPressed: onCreateTweet,
+        child: const Icon(
+          Icons.add,
+          color: Pallete.whiteColor,
+          size: 28,
         ),
-       ),
+      ),
       bottomNavigationBar: CupertinoTabBar(
         backgroundColor: Pallete.backgroundColor,
         currentIndex: _page,
-        onTap: pageChange,
+        onTap: onPageChange,
         items: [
           BottomNavigationBarItem(
             icon: Icon(
-          _page == 0 ? Icons.home_rounded : Icons.home_outlined,
+              _page == 0 ? Icons.home_rounded : Icons.home_outlined,
               color: Pallete.whiteColor,
             ),
           ),
@@ -61,7 +66,9 @@ class _HomeViewState extends State<HomeView> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-               _page == 2 ? Icons.notifications : Icons.notifications_none_outlined,
+              _page == 2
+                  ? Icons.notifications
+                  : Icons.notifications_none_outlined,
               color: Pallete.whiteColor,
             ),
           ),

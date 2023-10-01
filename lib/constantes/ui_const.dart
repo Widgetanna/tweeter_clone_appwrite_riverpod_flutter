@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tweeter_clone_flutter/commun/pallette.dart';
-
-
+import 'package:tweeter_clone_flutter/features/tweet/tweet_widgets/tweet_list.dart';
 
 
 class UIConstants {
@@ -19,13 +18,11 @@ class UIConstants {
       centerTitle: true,
     );
   }
-}
-/*
+
+
   static const List<Widget> bottomTabBarPages = [
-   //TweetList(),
-  const Text('Home Screen'),
+  TweetList(),
   const Text('Search Screen'),
   const Text('Notification Screen'),
   ];
 }
-*/

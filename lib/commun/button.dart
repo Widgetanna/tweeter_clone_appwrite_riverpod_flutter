@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:tweeter_clone_flutter/commun/pallette.dart';
 
 
-
-
 class ButtonWidget extends StatelessWidget {
   final VoidCallback onTap;
   final String label;

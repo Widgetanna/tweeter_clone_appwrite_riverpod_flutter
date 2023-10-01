@@ -22,6 +22,9 @@ abstract class IAuthAPI {
     required String email,
     required String password,
   });
+  
+  //pour la condition d'affichage de login et signup 
+   Future<model.Account?> currentUserAccount();
 
 }
 
@@ -32,7 +35,18 @@ class AuthAPI implements IAuthAPI {
   AuthAPI({
     required Account account,
   }) : _account = account;
-
+  
+  //implementation pour la condition d'affichage login, signup
+   @override
+  Future<model.Account?> currentUserAccount() async {
+    try {
+      return await _account.get();
+    } on AppwriteException {
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
   @override
   FutureEither<model.Account> signUp({
     required String email,
@@ -75,6 +89,7 @@ class AuthAPI implements IAuthAPI {
       );
     }
   }
+
 }
 
 

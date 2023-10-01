@@ -1,5 +1,6 @@
 
 import 'package:flutter/foundation.dart';
+import 'package:tweeter_clone_flutter/core/enum.dart';
 
 @immutable
 class Tweet {
@@ -8,7 +9,7 @@ class Tweet {
   final String link;
   final List<String> imageLinks;
   final String uid;
-  //final TweetType tweetType;
+  final TweetType tweetType;
   final DateTime? tweetedAt;
   final List<String> likes;
   final List<String> commentIds;
@@ -22,7 +23,7 @@ class Tweet {
     required this.link,
     required this.imageLinks,
     required this.uid,
-    //required this.tweetType,
+    required this.tweetType,
     required this.tweetedAt,
     required this.likes,
     required this.commentIds,
@@ -38,7 +39,7 @@ class Tweet {
     String? link,
     List<String>? imageLinks,
     String? uid,
-    //TweetType? tweetType,
+    TweetType? tweetType,
     DateTime? tweetedAt,
     List<String>? likes,
     List<String>? commentIds,
@@ -53,7 +54,7 @@ class Tweet {
       link: link ?? this.link,
       imageLinks: imageLinks ?? this.imageLinks,
       uid: uid ?? this.uid,
-      //tweetType: tweetType ?? this.tweetType,
+      tweetType: tweetType ?? this.tweetType,
       tweetedAt: tweetedAt ?? this.tweetedAt,
       likes: likes ?? this.likes,
       commentIds: commentIds ?? this.commentIds,
@@ -72,7 +73,7 @@ class Tweet {
     result.addAll({'link': link});
     result.addAll({'imageLinks': imageLinks});
     result.addAll({'uid': uid});
-    //result.addAll({'tweetType': tweetType.type});
+    result.addAll({'tweetType': tweetType.type});
     if (tweetedAt != null) {
       result.addAll({'tweetedAt': tweetedAt!.millisecondsSinceEpoch});
     }
@@ -96,7 +97,7 @@ class Tweet {
       link: map['link'] ?? '',
       imageLinks: List<String>.from(map['imageLinks']),
       uid: map['uid'] ?? '',
-      //tweetType: (map['tweetType'] as String).toTweetTypeEnum(),
+      tweetType: (map['tweetType'] as String).toTweetTypeEnum(),
       tweetedAt: tweetedAt,
       likes: List<String>.from(map['likes']),
       commentIds: List<String>.from(map['commentIds']),
@@ -109,7 +110,7 @@ class Tweet {
 
   @override
   String toString() {
-    return 'Tweet(text: $text, hashtags: $hashtags, link: $link, imageLinks: $imageLinks, uid: $uid,  tweetedAt: $tweetedAt, likes: $likes, commentIds: $commentIds, id: $id, reshareCount: $reshareCount, retweetedBy: $retweetedBy, repliedTo:$repliedTo)';
+    return 'Tweet(text: $text, hashtags: $hashtags, link: $link, imageLinks: $imageLinks, uid: $uid,  tweetType: $tweetType, tweetedAt: $tweetedAt, likes: $likes, commentIds: $commentIds, id: $id, reshareCount: $reshareCount, retweetedBy: $retweetedBy, repliedTo:$repliedTo)';
   }
 
   @override
@@ -122,7 +123,7 @@ class Tweet {
         other.link == link &&
         listEquals(other.imageLinks, imageLinks) &&
         other.uid == uid &&
-        //other.tweetType == tweetType &&
+        other.tweetType == tweetType &&
         other.tweetedAt == tweetedAt &&
         listEquals(other.likes, likes) &&
         listEquals(other.commentIds, commentIds) &&
@@ -139,7 +140,7 @@ class Tweet {
         link.hashCode ^
         imageLinks.hashCode ^
         uid.hashCode ^
-        //tweetType.hashCode ^
+        tweetType.hashCode ^
         tweetedAt.hashCode ^
         likes.hashCode ^
         commentIds.hashCode ^

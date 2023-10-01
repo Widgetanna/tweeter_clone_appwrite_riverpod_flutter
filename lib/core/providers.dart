@@ -16,7 +16,18 @@ final appwriteAccountProvider = Provider((ref) {
   return Account(client);
 });
 
+//pour enregistrer user dans database et auth au même temps
 final appwriteDatabaseProvider = Provider((ref) {
   final client = ref.watch(appwriteClientProvider);
   return Databases(client);
+});
+
+final appwriteStorageProvider = Provider((ref) {
+  final client = ref.watch(appwriteClientProvider);
+  return Storage(client);
+});
+
+final appwriteRealtimeProvider = Provider((ref) {
+  final client = ref.watch(appwriteClientProvider);
+  return Realtime(client);
 });

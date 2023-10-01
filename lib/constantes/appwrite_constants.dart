@@ -6,10 +6,12 @@ class AppwriteConstants {
   //static const String endPoint = "http://localhost:80/v1";
   static const String endPoint = "https://cloud.appwrite.io/v1";
  
-  //static const String imagesBucket = "";
-  //static const String userCollection = "";
-  //static const String tweetCollection = "";
+  
+  static const String usersCollection = "65176100265cd8ff53ee";
+  static const String imagesBucket = "65185b060ff05690b206";
+  static const String tweetsCollection = "65181a4003c1e97dbcff";
 
-  //static String imageUrl(String imageId) =>
-   //   '$endPoint/storage/buckets/$imagesBucket/files/$imageId/view?project=$projectId&mode=admin';
+ static const String notificationsCollection = "65185a661bf713039c48";
+  static String imageUrl(String imageId) =>
+     '$endPoint/storage/buckets/$imagesBucket/files/$imageId/view?project=$projectId&mode=admin';
 }
