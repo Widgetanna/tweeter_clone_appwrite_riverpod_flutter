@@ -9,6 +9,7 @@ import 'package:tweeter_clone_flutter/core/enum.dart';
 import 'package:tweeter_clone_flutter/features/auth/controller/auth_controller.dart';
 import 'package:tweeter_clone_flutter/features/tweet/hashtags/hastags.dart';
 import 'package:tweeter_clone_flutter/features/tweet/tweet_controller/tweet_controller.dart';
+import 'package:tweeter_clone_flutter/features/tweet/tweet_view/reply_view.dart';
 import 'package:tweeter_clone_flutter/features/tweet/tweet_widgets/caroussel_image.dart';
 import 'package:tweeter_clone_flutter/features/tweet/tweet_widgets/icone_button_twitter.dart';
 import 'package:tweeter_clone_flutter/model/tweeter_model.dart';
@@ -32,10 +33,10 @@ class TweetCard extends ConsumerWidget {
                 return GestureDetector(
                   onTap: () {
                     // Navigate to tweet details screen
-                    // Navigator.push(
-                    //   context,
-                    //   TwitterReplyScreen.route(tweet),
-                    // );
+                    Navigator.push(
+                      context,
+                     ReplyView.route(tweet),
+                     );
                   },
                   child: Column(
                     children: [
@@ -62,6 +63,7 @@ class TweetCard extends ConsumerWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                //pour retweeted
                                 if (tweet.retweetedBy.isNotEmpty)
                                   Row(
                                     children: [

@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tweeter_clone_flutter/commun/button.dart';
-import 'package:tweeter_clone_flutter/commun/pallette.dart';
+import 'package:tweeter_clone_flutter/constantes/pallette.dart';
 import 'package:tweeter_clone_flutter/constantes/ui_const.dart';
 import 'package:tweeter_clone_flutter/features/auth/controller/auth_controller.dart';
 import 'package:tweeter_clone_flutter/features/auth/view/login_view.dart';

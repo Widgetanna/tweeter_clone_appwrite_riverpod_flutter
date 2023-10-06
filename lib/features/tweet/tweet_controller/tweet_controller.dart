@@ -34,6 +34,11 @@ final getLatestTweetProvider = StreamProvider((ref) {
   return tweetApi.getLatestTweet();
 });
 
+final getRepliesToTweetsProvider = FutureProvider.family((ref, Tweet tweet) {
+  final tweetController = ref.watch(tweetControllerProvider.notifier);
+  return tweetController.getRepliesToTweet(tweet);
+});
+
 final getTweetByIdProvider = FutureProvider.family((ref, String id) async {
   final tweetController = ref.watch(tweetControllerProvider.notifier);
   return tweetController.getTweetById(id);
@@ -221,6 +226,10 @@ for (String word in wordsInSentence) {
     return  hashtags ;
  }
 
+Future<List<Tweet>> getRepliesToTweet(Tweet tweet) async {
+    final documents = await _tweetApi.getRepliesToTweet(tweet);
+    return documents.map((tweet) => Tweet.fromMap(tweet.data)).toList();
+  }
   
 
  }

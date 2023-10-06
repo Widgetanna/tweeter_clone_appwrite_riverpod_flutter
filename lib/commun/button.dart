@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tweeter_clone_flutter/commun/pallette.dart';
+import 'package:tweeter_clone_flutter/constantes/pallette.dart';
 
 
 class ButtonWidget extends StatelessWidget {

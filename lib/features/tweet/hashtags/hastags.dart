@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tweeter_clone_flutter/commun/pallette.dart';
+import 'package:tweeter_clone_flutter/constantes/pallette.dart';
 
 
 class HashtagText extends StatelessWidget {
@@ -17,7 +17,8 @@ class HashtagText extends StatelessWidget {
       if (element.startsWith('#')) {
         textspans.add(
           TextSpan(
-           text: element,
+            //pour separer les mots utiliser interpolation 
+              text: '$element ',
             style: const TextStyle(
               color: Pallete.blueColor,
               fontSize: 18,
@@ -30,7 +31,7 @@ class HashtagText extends StatelessWidget {
         print('Element $element');
         textspans.add(
           TextSpan(
-            text: element,
+               text: '$element ',
             style: const TextStyle(
               color: Pallete.blueColor,
               fontSize: 18,
@@ -41,7 +42,7 @@ class HashtagText extends StatelessWidget {
       } else {
         textspans.add(
           TextSpan(
-        text: element,
+           text: '$element ',
             style: const TextStyle(
               fontSize: 18,
               ),

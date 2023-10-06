@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../commun/pallette.dart';
+import '../constantes/pallette.dart';
 
 class AppTheme {
   static ThemeData theme = ThemeData.dark().copyWith(

@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tweeter_clone_flutter/commun/pallette.dart';
+import 'package:tweeter_clone_flutter/constantes/pallette.dart';
 import 'package:tweeter_clone_flutter/constantes/ui_const.dart';
 import 'package:tweeter_clone_flutter/features/tweet/tweet_view/tweet_view.dart';
 
 
 class HomeView extends StatefulWidget {
+  
   static route() => MaterialPageRoute(
         builder: (context) => const HomeView(),
       );
@@ -33,6 +34,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //affichage appBar dans exploreview screen
       appBar: _page == 0 ? appBar : null,
       //pour maintenir state
       body: IndexedStack(

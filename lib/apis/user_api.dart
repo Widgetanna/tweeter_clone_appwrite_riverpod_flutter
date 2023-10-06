@@ -17,7 +17,7 @@ abstract class IUserAPI {
   FutureEitherVoid saveUserData(UserModel userModel);
   //data stocké dans appwrire
   Future<model.Document> getUserData(String uid);
-  
+  //pour avoir accès à nom de user dans la serchbar
   Future<List<model.Document>> searchUserByName(String name);
   FutureEitherVoid updateUserData(UserModel userModel);
   Stream<RealtimeMessage> getLatestUserProfileData();

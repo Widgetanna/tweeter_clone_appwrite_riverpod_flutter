@@ -3,7 +3,7 @@ import 'package:appwrite/models.dart' as model;
 import 'package:fpdart/fpdart.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tweeter_clone_flutter/core/core.dart';
-import 'package:tweeter_clone_flutter/core/providers.dart';
+
 
 
 

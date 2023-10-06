@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tweeter_clone_flutter/commun/pallette.dart';
+import 'package:tweeter_clone_flutter/constantes/pallette.dart';
+import 'package:tweeter_clone_flutter/features/explore/explore_view.dart';
 import 'package:tweeter_clone_flutter/features/tweet/tweet_widgets/tweet_list.dart';
 
 
@@ -22,7 +23,7 @@ class UIConstants {
 
   static const List<Widget> bottomTabBarPages = [
   TweetList(),
-  const Text('Search Screen'),
+  ExploreView(),
   const Text('Notification Screen'),
   ];
 }
